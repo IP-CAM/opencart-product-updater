@@ -137,11 +137,7 @@ class ModelToolOcuProductUpdater extends Model {
     function storeProductsIntoDatabase( &$database, &$products )
     {
         // start transaction, remove products
-        $sql = "START TRANSACTION;\n";
-
-        $sql .= "DELETE FROM `".DB_PREFIX."product_to_category`;\n";
-
-        $this->import( $database, $sql );
+        $database->query("START TRANSACTION;");
 
         // generate and execute SQL for storing the products
         foreach ($products as $product) {
