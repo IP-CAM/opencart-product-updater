@@ -598,10 +598,11 @@ class ModelToolOcuProductUpdater extends Model {
        // The actual product specials data
        $i += 1;
        $j = 0;
-       $query  = "SELECT p.sku, ps.*, cg.name FROM `".DB_PREFIX."product_special` ps ";
+       $query  = "SELECT p.sku, ps.*, cgd.name FROM `".DB_PREFIX."product_special` ps ";
        $query .= "INNER JOIN `".DB_PREFIX."product` p ON p.product_id=ps.product_id ";
        $query .= "LEFT JOIN `".DB_PREFIX."customer_group` cg ON cg.customer_group_id=ps.customer_group_id ";
-       $query .= "ORDER BY ps.product_id, cg.name";
+       $query .= "LEFT JOIN `".DB_PREFIX."customer_group_description` cgd ON cg.customer_group_id=cgd.customer_group_id AND language_id = '" . (int) $this->config->get('config_language_id') . "' ";
+       $query .= "ORDER BY ps.product_id, cgd.name";
        $result = $database->query( $query );
        foreach ($result->rows as $row) {
            $worksheet->setRow( $i, 13 );
@@ -644,10 +645,11 @@ class ModelToolOcuProductUpdater extends Model {
            // The actual product discounts data
            $i += 1;
            $j = 0;
-           $query  = "SELECT p.sku, pd.*, cg.name FROM `".DB_PREFIX."product_discount` pd ";
-        $query .= "INNER JOIN `".DB_PREFIX."product` p ON p.product_id=pd.product_id ";
+           $query  = "SELECT p.sku, pd.*, cgd.name FROM `".DB_PREFIX."product_discount` pd ";
+           $query .= "INNER JOIN `".DB_PREFIX."product` p ON p.product_id=pd.product_id ";
            $query .= "LEFT JOIN `".DB_PREFIX."customer_group` cg ON cg.customer_group_id=pd.customer_group_id ";
-           $query .= "ORDER BY pd.product_id, cg.name";
+           $query .= "LEFT JOIN `".DB_PREFIX."customer_group_description` cgd ON cg.customer_group_id=cgd.customer_group_id AND language_id = '" . (int) $this->config->get('config_language_id') . "' ";
+           $query .= "ORDER BY pd.product_id, cgd.name";
            $result = $database->query( $query );
            foreach ($result->rows as $row) {
                $worksheet->setRow( $i, 13 );
