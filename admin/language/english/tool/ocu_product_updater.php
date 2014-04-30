@@ -10,14 +10,14 @@
  * http://www.gnu.org/copyleft/gpl.html
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@opencart.ua so we can send you a copy immediately.
+
  *
  * This product based on export/import module by maxzon.ru
  * Contains other components. That are distributed on other licenses, specified in theirs source code.
  *
  * @category   OpenCart
  * @package    OCU Product Updater
- * @copyright  Copyright (c) 2011 Eugene Kuligin by OpenCart Ukrainian Community (http://www.opencart.ua)
+ * @copyright  Copyright (c) 2011 Eugene Lifescale by OpenCart Ukrainian Community (http://opencart-ukraine.tumblr.com)
  * @license    http://www.gnu.org/copyleft/gpl.html     GNU General Public License, Version 3
  */
 
